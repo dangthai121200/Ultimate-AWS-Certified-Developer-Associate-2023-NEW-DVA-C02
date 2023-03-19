@@ -1,0 +1,19 @@
+IAM
+ GET ALL LIST USERS: aws iam list-users
+ 
+EC2
+	22 = ssh login to linux
+	21 = ftp upload file
+	22 = sftp upload file using ssh
+	80 = http
+	443 = https
+	3389 = RDP Remote desktop - login to windows instance
+	Connect EC2 as Putty
+		- If Not yet file .ppk and have file .pem
+			- Generate file .pem -> chose PuttyGen -> load -> chose file .pem -> save private key
+		- Chose Putty -> type hostname: ec2-user@3.21.98.153 -> type Saved Sessions -> Choose SSH(see the left)
+		  -> chose Auth -> chose Credentials -> chose location save file .ppk
+		- Comeback Session -> chose save -> chose open
+	Connect EC2 as windows
+		- Open PowerShell or CMD at location save file .ppk
+		- Type ssh -i '.\EC2 Tutorial.pem' ec2-user@3.21.98.153
