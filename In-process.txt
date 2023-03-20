@@ -28,4 +28,5 @@
 35. SSH Overview: Done
 36. How to SSH using Linux or Mac:
 37. How to SSH using Windows: Done
-38. How to SSH using Windows 10
+38. How to SSH using Windows 10: Done
+39. SSH Troubleshooting

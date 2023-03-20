@@ -1,7 +1,7 @@
-IAM
+IAM: user authorization: role, permission
  GET ALL LIST USERS: aws iam list-users
  
-EC2
+EC2: virtual machine
 	22 = ssh login to linux
 	21 = ftp upload file
 	22 = sftp upload file using ssh
