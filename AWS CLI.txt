@@ -17,3 +17,6 @@ EC2: virtual machine
 	Connect EC2 as windows
 		- Open PowerShell or CMD at location save file .ppk
 		- Type ssh -i '.\EC2 Tutorial.pem' ec2-user@3.21.98.153
+	
+	aws --version: check version
+	aws configure: configure key

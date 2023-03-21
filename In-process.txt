@@ -29,4 +29,7 @@
 36. How to SSH using Linux or Mac:
 37. How to SSH using Windows: Done
 38. How to SSH using Windows 10: Done
-39. SSH Troubleshooting
+39. SSH Troubleshooting: done
+40. EC2 Instance Connect done
+41. EC2 Instance Roles Demo: done
+42. EC2 Instance Purchasing Options:
