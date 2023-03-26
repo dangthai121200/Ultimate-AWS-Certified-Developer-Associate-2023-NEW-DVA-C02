@@ -32,4 +32,16 @@
 39. SSH Troubleshooting: done
 40. EC2 Instance Connect done
 41. EC2 Instance Roles Demo: done
-42. EC2 Instance Purchasing Options:
+42. EC2 Instance Purchasing Options: done
+43. EBS Overview:
+44. EBS Hands on: done
+45. EBS Snapshots: done
+46. EBS Snapshots - Hands On: done
+47. AMI Overview: done
+48. AMI Hands On: done
+49. EC2 Instance Store: done
+50. EBS Volume Types: done
+51. EBS Multi-Attach: done
+52. Amazon EFS: done
+53. Amazon EFS - Hands on: 
+

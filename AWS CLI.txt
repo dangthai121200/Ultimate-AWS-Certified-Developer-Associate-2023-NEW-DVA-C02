@@ -20,3 +20,115 @@ EC2: virtual machine
 	
 	aws --version: check version
 	aws configure: configure key
+
+EC2 Instance Storage:
+	EBS (Elastic Block Store):
+		It a network drive can attach to instance while they run
+		Persist data
+		Per EBS only connect one EC2 instance but one EC2 instance have many EBS
+		It's locked to an Availability Zone
+		Provisioned capacity
+		Delete on Termination attribute:
+			When an EC2 instance terminates:
+				EBS volume is delete (attribute enabled)
+				EBS volume is not delete (attribute disabled)
+		Can configure when create instance
+		EBS Snapshot:
+			What ?
+				Make backup (Snapshot) of your EBS volume at a point in time
+				Can copy snapshot across AC or Region
+				Limited perfomance
+			Features
+				EBS Snnapshot Archive
+				Recycle Bin for EBS Sncapshot
+				Fast Snapshot restore (FSR): expensive
+	AMI (Amazon Machine Image)
+		What ?
+			AMI are a customization of an EC2 Instance
+			AMi are build for a specifi region
+			Can launch EC2 instance from
+				A Public AMI: AWS provided
+				Your own AMI: you make and maintain them yourself
+				An aws Marketplace: an AMI someone else made
+		AMI process (from instance)
+			Start an EC2 instance and customize it
+			Stop the instance
+			Build an AMI - this will also creates EBS snapshots
+			Launch instance from other AMIs
+	Sumary:
+		Limited perfomance
+		If you need a high-perfomance hardware disk use EC2 instance store
+		Better I/O perfomance
+		EC2 instance store lose their storage if they're stopped
+		Good for buffer / cacge / scratch data / temporary content
+		Risk of data loss of hardware fails
+		Backup and Replication are your reponsibility
+	EBS volume type:
+		Ex:
+				Critical business applications with sustained IOPS perfomance
+				Applications that need more than 16,000 IOPS
+				Great for database workloads
+		EBS volumes come in 6 type
+			gp2 / gp3 (1GiB - 16 TiB): ssd
+				Cost effecive storage, low-latency
+				System boot volumes, Vitrual desktops, Development and test enviroments
+				gp3
+					Baseline of 3,000 IOPS and throughput of 125 MiB/s
+					Can increase PIOPS up to 16,000 and throughput up to 1000 MuB/s independently
+					Not linked
+				gp2
+					Small gp2 volumes can burst IOPS to 3,000
+					Size of the volume and IOPS are linked, max IOPS is 16,000
+					3 IOPS per GB ,means at 5,334 GB we are at the max IOPS
+			io1 / io2 (4GiB - 16 TiB): ssd
+				Max PIOPS: 64,000 for Nitro EC2 instance & 32,000 for other
+				Can increase PIOPS independently from storage size
+				io1 have more durability and mor IOPS per GiB
+				io2 block Express (4GiB - 64 TiB)
+					Sub-millisecond latency
+					Max PIOPS 256,000 with an IOPS: GiB ratio of 1,000
+			Supports EBS Multi-attach
+			st1 / sc1: hdd
+				Cannot be a boot volume
+				125 GiB to 16TiB
+				Throughput Opeimized HDD
+					Big data, data warehouse, log processing (st1)
+					Max throughput 500 MiB/s - max IOPS 500
+				Cold HDD
+					For data that is infrequently accessed
+					Scenatios where lowest cost is important (sc1)
+					Max throughput250 MiB/s - max IOPS 250
+	EBS Multi-Attach - io1/io2 family
+		Attach the same EBS volume to multipe EC2 instcane in the same AZ
+		Only for io1 and io2
+		Each instance has full react & write permissions to the high-performance volume
+		Use case
+			Achieve higher application availability in clustered Linux applications
+			Applications must manage concurrent wirte operations
+		Up to 166 EC2 instcane at a time
+		Must use a file system that's cluster-aware ( not XFS, EX4, etc,..)
+	Amazon EFS - Elastic file system
+		Managed NFS (netword file system) that can be mouned on mant EC2
+		EFS works with EC2 instances in multi AZ
+		Highly available, scalable, expensive (3x gp2), pay per use
+		Use case: content management, seb serving, data sharing, wordpress
+		Uses NFSv4.1 protocol
+		Usee security group to control access to EFS
+		Compatibale with linux base AMI (not windows)
+		Encryption at est using KMS
+		POSIX file system (~Linux) that has a standard file API
+		File system scales automatically, pay-per-use, no capcity planning
+		EFS - Performance & Storage Classes
+			EFS - Performance
+				EFS scales
+				Performance Mode (set at EFS creation time)
+					General Purpose
+					Max i/o
+				Throughput Mode
+					Bursting
+					Provisioned
+					Elastic
+			Storage Classes
+				Storage Tiers(lifecycle management feature - move file after N days)
+				Availability and durability
+	
