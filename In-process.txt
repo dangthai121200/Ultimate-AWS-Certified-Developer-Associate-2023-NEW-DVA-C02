@@ -43,5 +43,5 @@
 50. EBS Volume Types: done
 51. EBS Multi-Attach: done
 52. Amazon EFS: done
-53. Amazon EFS - Hands on: 
-
+53. Amazon EFS - Hands on: done
+54. EFS vs EBS: done

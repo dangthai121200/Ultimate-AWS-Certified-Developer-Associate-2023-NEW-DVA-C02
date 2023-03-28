@@ -21,6 +21,8 @@ EC2: virtual machine
 	aws --version: check version
 	aws configure: configure key
 
+*****************start section 6 EC2 Instance Storage***************************
+
 EC2 Instance Storage:
 	EBS (Elastic Block Store):
 		It a network drive can attach to instance while they run
@@ -131,4 +133,25 @@ EC2 Instance Storage:
 			Storage Classes
 				Storage Tiers(lifecycle management feature - move file after N days)
 				Availability and durability
-	
+	EFS vs EBS
+		EBS volumes:
+			EBS only one instance (except io1/io2)
+			EBS lock Availability Zone (AZ)
+			gp2: IO increase of the dis size increase
+			io1 can increase Io in independently
+		To migarate an EBS volume across AZ
+			Task a snapshot
+			Restore the snnapshot to anthor AZ
+			EBS backup use IO and you shouldn't run them while your application is handling
+				a lot of traffic
+		Root EBS volumes of instance get terminated vu default of the EC2 instance gets terminated (you can disabled that)
+		EFS:
+			Mounting 100s of instance across AZ
+			EFS share website files (WordPress)
+			Only for Linux instance (POSIX)
+			EFS has a higher price point than EBS
+			Can leverage EFS-IA for cost savings
+			
+		Remeber EFS vs EBS vs Instance Store alway attach EC2
+		
+*****************start section 6 EC2 Instance Storage***************************
